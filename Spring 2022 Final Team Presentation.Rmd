@@ -1,0 +1,21 @@
+---
+title: "sta_100_hw_1"
+author: "Tiffany Chan"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+```{r}
+getwd()
+```
+
+```{r}
+pain<-read_csv(here())
+```
+
