@@ -3,8 +3,8 @@ title: "sta_100_hw_1"
 author: "Tiffany Chan"
 date: "`r Sys.Date()`"
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -13,30 +13,15 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## R Markdown
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
-```
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
-```{r}
-pain<-read_csv("data/pain.csv")
-```
+
+
 
 ```{r}
-glimpse(pain)
+pain<-read.csv("data/pain.csv")
 ```
+
+
 
 #(a) Find the overall mean of pain tolerance, regardless of hair color.
 ```{r}
@@ -49,11 +34,6 @@ sd(pain$Score)
 ```
 
 #(c) Find the mean pain tolerance for the category Dark-Brunette. Hint: Use R to find the mean for each group.
-```{r}
-pain_dark_brunette<-pain %>% 
-  filter(HairColor=="DarkBrunette")
-mean(pain_dark_brunette$Score)
-```
 ```{r}
 aggregate(Score~HairColor,pain,mean)
 ```
@@ -69,11 +49,14 @@ aggregate(Score~HairColor,pain,length)
 ```
 
 #(f) Which hair color category had the highest average pain tolerance?
+
 #Light Blondes had the highest average pain tolerance.
 
 #(g) Which hair color category had the lowest standard deviation of pain tolerance?
+
 #Light Brunettes had the lowest standard deviation of pain tolerance.
 
 #(h) Which hair color category had the most subjects?
+
 #Dark Blonde,Dark Brunette, and Light Blonde tied for having most subjects
 
