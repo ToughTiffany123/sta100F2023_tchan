@@ -1,0 +1,122 @@
+---
+title: "sta_100_hw_2"
+author: "Tiffany Chan"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+```{r}
+getwd()
+```
+
+```{r}
+gender = rep(c("female","male"), c(1835, 2691))
+admitted = rep(c("yes", "no", "yes", "no"), c(557, 1278, 1198, 1493))
+dept = rep(c("A", "B", "C", "D", "E", "F", "A", "B", "C", "D", "E", "F"),
+           c(89, 17, 202, 131, 94, 24, 19, 8, 391, 244, 299, 317))
+dept2 = rep(c("A", "B", "C", "D", "E", "F", "A", "B", "C", "D", "E", "F"),
+            c(512, 353, 120, 138, 53, 22, 313, 207, 205, 279, 138, 351))
+department = c(dept, dept2)
+ucb = data.frame(gender, admitted,department)
+rm(gender, admitted, dept, dept2, department)
+```
+
+```{r}
+head(ucb)
+```
+```{r}
+hist(mtcars$mpg)
+```
+```{r}
+hist(mtcars$mpg, xlab = "Miles per Gallon", main = "Distribution of Miles per Gallon" )
+```
+```{r}
+boxplot(mtcars$mpg)
+```
+```{r}
+boxplot(mtcars$mpg, xlab="Miles per Gallon", main="Distribution of Miles per Gallon", horizontal = TRUE)
+```
+
+You will be working with the dataset colors.csv, which
+has the following columns:
+Column 1: Eye: The eye color of the subject
+Column 2: Sex: The hair color of the subject
+Column 3: GPA: The college GPA of the subject
+```{r}
+colors<-read.csv("/Users/tiffanysmacbookpro/Desktop/sta100F2023_tchan/data/colors.csv")
+```
+```{r}
+names(colors)
+```
+```{r}
+#(a) Plot a barplot of the eye color of the subjects. What
+#color is the least common?
+```
+```{r}
+eye.table=table(colors$Eye)
+```
+```{r}
+barplot(eye.table, main="Frequency of Eye Colors")
+```
+```{r}
+#Least common eye color is green eyes.
+```
+```{r}
+#(b) Plot a side-by-side barplot of the subjects, using sex
+#and eye color. Comparing men and women, who
+#has a higher probability of brown eyes? Be sure to
+#choose the grouping of the bars that make it easier
+#to read and interpret the result.
+```
+```{r}
+eye.sex.table=table(colors$Eye,colors$Sex)
+barplot(eye.sex.table, main="Frequency of Eye Colors in Sex", beside = TRUE, legend=row.names(eye.sex.table))
+```
+```{r}
+#Females had a higher probability of having brown eyes
+```
+```{r}
+#(c) Plot a histogram of GPA. What is the most common
+#interval of GPA?
+```
+```{r}
+hist(colors$GPA, main="Distribution of GPA", xlab = "GPA")
+```
+```{r}
+#Most common interval ranged from 3.3 to 3.4
+```
+```{r}
+#(d) Plot a side-by-side boxplot of GPA by eye color.
+#Which eye color has the highest minimum?
+```
+```{r}
+boxplot(GPA ~ Eye, data=colors, xlab = "Eye Color", main = "GPA distribution grouped by eye color")
+```
+```{r}
+#Hazel eye color had the highest minimum.
+```
+```{r}
+#(e) Refer to the previous side-by-side boxplot of GPA
+#by eye color. Which eye color has the highest 25th
+#percentile?
+```
+```{r}
+#Blue eyes had the highest 25th percentile.
+```
+```{r}
+#(f) Refer to the previous side-by-side boxplot of GPA
+#by eye color. Which eye color has the most outliers?
+```
+```{r}
+#Blue eyes had the most outliers.
+```
+
+
+
+

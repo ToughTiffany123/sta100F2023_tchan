@@ -1,0 +1,62 @@
+---
+title: "sta_100_hw_1"
+author: "Tiffany Chan"
+date: "`r Sys.Date()`"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+
+
+```{r}
+pain<-read.csv("data/pain.csv")
+```
+
+
+
+#(a) Find the overall mean of pain tolerance, regardless of hair color.
+```{r}
+mean(pain$Score)
+```
+
+#(b) Find the overall standard deviation of pain tolerance, regardless of hair color.
+```{r}
+sd(pain$Score)
+```
+
+#(c) Find the mean pain tolerance for the category Dark-Brunette. Hint: Use R to find the mean for each group.
+```{r}
+aggregate(Score~HairColor,pain,mean)
+```
+
+#(d) Find the standard deviation of pain tolerance for the category LightBrunette. Hint: Use R to find the standard deviation for each group.
+```{r}
+aggregate(Score~HairColor,pain,sd)
+```
+
+#(e) Find the number of subjects that were in the category LightBlond. Hint: Use R to find the number of subjects for each group.
+```{r}
+aggregate(Score~HairColor,pain,length)
+```
+
+#(f) Which hair color category had the highest average pain tolerance?
+
+#Light Blondes had the highest average pain tolerance.
+
+#(g) Which hair color category had the lowest standard deviation of pain tolerance?
+
+#Light Brunettes had the lowest standard deviation of pain tolerance.
+
+#(h) Which hair color category had the most subjects?
+
+#Dark Blonde,Dark Brunette, and Light Blonde tied for having most subjects
+
