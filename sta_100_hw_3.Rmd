@@ -1,0 +1,105 @@
+---
+title: "sta_100_hw_3"
+author: "Tiffany Chan"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+student<-read.csv("/Users/tiffanysmacbookpro/Desktop/sta100F2023_tchan/data/student.csv")
+```
+```{r}
+names(student)
+```
+
+```{r}
+#(a) Plot a QQ plot (normal probability plot) of students
+#heights. Does this suggest students heights are ap-
+#proximately normally distributed?
+```
+```{r}
+qqnorm(student$height,main="Student Height Distribution")
+qqline(student$height)
+```
+```{r}
+#The student heights are approximately normally distributed.
+```
+```{r}
+#(b) Plot a QQ plot (normal probability plot) for stu-
+#dents pulse. Does this suggest students pulses are
+#approximately normally distributed?
+```
+```{r}
+qqnorm(student$pulse, main="Student Pulse Distribution")
+qqline(student$pulse)
+```
+```{r}
+#The distribution of student pulses is not normally distributed.
+```
+```{r}
+#(c) Plot a QQ plot (normal probability plot) for high-
+#school GPA. Does this suggest highschool GPA are
+#approximately normally distributed?
+```
+```{r}
+qqnorm(student$hsGPA, main="Student GPA Distribution")
+qqline(student$hsGPA)
+```
+```{r}
+#The distribution of student's heartbeats is not normal.
+```
+```{r}
+#(d) What proportion of the data for students height lies
+#within one standard deviation from the mean?
+```
+```{r}
+X = student$height
+mean.height = mean(X)
+sd.height = sd(X)
+one.sd.away = mean(X < mean.height + sd.height & X > mean.height - sd.height)
+one.sd.away
+```
+```{r}
+#0.735 of the data lies within one standard deviation from the mean.
+```
+
+```{r}
+#(e) What proportion of the data for students pulse lies
+#within two standard deviation from the mean?
+```
+```{r}
+X = student$pulse
+mean.pulse = mean(X)
+sd.pulse = sd(X)
+two.sd.away = mean(X < mean.pulse + 2*sd.pulse & X > mean.pulse - 2*sd.pulse)
+two.sd.away
+```
+```{r}
+#0.96 of the data lies within two standard deviations from the mean.
+```
+```{r}
+#(f) What proportion of the data for highschool GPA
+#lies within three standard deviation from the mean?
+```
+```{r}
+X = student$hsGPA
+mean.gpa = mean(X)
+sd.gpa = sd(X)
+three.sd.away = mean(X < mean.gpa + 3*sd.gpa & X > mean.gpa - 3*sd.gpa)
+three.sd.away
+```
+```{r}
+#0.985 of the data lies within three standard deviations from the mean.
+```
+```{r}
+#(g) What do you notice about the proportions from d),
+#e), and f) and how do they related to the QQ plots?
+```
+```{r}
+#I noticed that the proportions from d-f increase because the more standard deviations away from the mean we are looking at the more of the original data is in the interval. Additionally the proportions relate to the points plotted on the QQ plot where each point counts as a single record of data. So pretty much the x-axis is the interval being set and whatever point is in that interval is the proportion within the set number of standard deviations from the mean.
+```
+
